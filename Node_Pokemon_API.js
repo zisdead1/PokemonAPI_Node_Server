@@ -1,13 +1,24 @@
 var express = require("express");
 var app = express();
 
-//For parsing out the pokemon entered in URL
-//const url = require('url');
+//Needed to call the PokeAPI using Node
+//friendly interface
+var Pokedex = require('pokedex-promise-v2');
+var P = new Pokedex();
 
 app.get("/pokemon/:pokemonid", (req, res, next) => {
     //Dynamically get the pokemon character which will be 
     //last param in the url
-    res.send("pokemon is " + req.params.pokemonid);
+    var pokemon = req.params.pokemonid;
+    if(pokemon === "")
+    {
+        throw new Error("A pokemon string was not included in the URL");
+    }
+    res.send("pokemon is " + pokemon);
+    //now need to make a call to the 
+    //PokeAPI to get a description for the
+    //pokemon character sent in the URL
+    
     //res.json(["Dave","Garrehy","Food"]);
 });
 
