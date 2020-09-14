@@ -1,0 +1,13 @@
+{
+    "name": "Docker Pokemon App",
+    "version": "1.0.0",
+    "description": "Node.js on Docker",
+    "author": "davegarrehy@gmail.com",
+    "main": "Node_Pokemon_API.js",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "dependencies": {
+      "express": "^4.16.1"
+    }
+  }
