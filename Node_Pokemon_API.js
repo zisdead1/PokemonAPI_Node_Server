@@ -1,3 +1,4 @@
+const { Console } = require("console");
 var express = require("express");
 var app = express();
 
@@ -18,16 +19,15 @@ app.get("/pokemon/:pokemonid", (req, res, next) => {
     //now need to make a call to the 
     //PokeAPI to get a description for the
     //pokemon character sent in the URL
-    P.getPokemonByName(34, function(response, error) { // with callback
+    //https://pokeapi.co/api/v2/pokemon-species/
+    //has an embedded description of a given pokemon
+    P.getPokemonSpeciesByName(pokemon, function(response, error) { // with callback
         if(!error) {
-          res.json(response);
+          res.json(response.flavor_text_entries[6].flavor_text);
         } else {
-          res.send(error);
+          res.status(404).json('Sorry we dont have that Pokemon');
         }
     });
-    
-    
-    //res.json(["Dave","Garrehy","Food"]);
 });
 
 app.listen(3000, () => {
