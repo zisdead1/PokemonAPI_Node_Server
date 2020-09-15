@@ -1,4 +1,3 @@
-//const { Console } = require("console");
 var axios = require('axios');
 var express = require("express");
 var app = express();
@@ -39,7 +38,7 @@ app.get("/pokemon/:pokemonid", (req, res, next) => {
         var escapedStr = encodeURI(url);
         //console.log(escapedStr);
         let postRes = await axios.post("https://api.funtranslations.com/translate/shakespeare.json?text=CHARIZARD%20flies%20around%20the%20sky");
-        res.send(postRes.data);
+        res.send(postRes.data.contents.translated);
         console.log(res.data);
     }
 });
