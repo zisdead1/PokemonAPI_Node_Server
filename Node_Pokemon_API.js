@@ -14,7 +14,7 @@ app.get("/pokemon/:pokemonid", (req, res, next) => {
     //now need to make a call to the 
     //PokeAPI to get a description for the
     //pokemon character sent in the URL
-    
+
     //https://pokeapi.co/api/v2/pokemon-species/
     //has an embedded description of a given pokemon
     P.getPokemonSpeciesByName(pokemon, function(response, error) { // with callback
@@ -35,14 +35,22 @@ app.get("/pokemon/:pokemonid", (req, res, next) => {
 
     async function makePostRequest(url, pokemonName) {
         console.log(url);
-        let postRes = await axios.post(url);
-        var output = new Object();
-        output.name = pokemonName;
-        output.description = postRes.data.contents.translated;
-        res.json(output);
+        try
+        {
+            let postRes = await axios.post(url);
+            var output = new Object();
+            output.name = pokemonName;
+            output.description = postRes.data.contents.translated;
+            res.json(output);
+        }catch (error) {
+            res.json('To may API calls this hour');
+        }
     }
 });
 
+if(!module.parent){
 app.listen(3000, () => {
     console.log("Server running on port 3000");
 });
+//module.exports = server;
+}

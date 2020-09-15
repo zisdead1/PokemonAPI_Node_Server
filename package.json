@@ -4,7 +4,7 @@
   "description": "Pokemon description App",
   "main": "Node_Pokemon_API.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --reporter spec"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,13 @@
   "bugs": {
     "url": "https://github.com/zisdead1/PokemonAPI_Node_Server/issues"
   },
-  "homepage": "https://github.com/zisdead1/PokemonAPI_Node_Server#readme"
+  "homepage": "https://github.com/zisdead1/PokemonAPI_Node_Server#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.1.3"
+  },
+  "dependencies": {
+    "chai-http": "^4.3.0",
+    "request": "^2.88.2"
+  }
 }
