@@ -1,13 +1,24 @@
 {
-    "name": "Docker Pokemon App",
-    "version": "1.0.0",
-    "description": "Node.js on Docker",
-    "author": "davegarrehy@gmail.com",
-    "main": "Node_Pokemon_API.js",
-    "scripts": {
-      "start": "node server.js"
-    },
-    "dependencies": {
-      "express": "^4.16.1"
-    }
-  }
+  "name": "pokemonapi_node_server",
+  "version": "1.0.0",
+  "description": "Pokemon description App",
+  "main": "Node_Pokemon_API.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zisdead1/PokemonAPI_Node_Server.git"
+  },
+  "keywords": [
+    "Pokemon",
+    "Shakespeare",
+    "Endpoint"
+  ],
+  "author": "davegarrehy@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zisdead1/PokemonAPI_Node_Server/issues"
+  },
+  "homepage": "https://github.com/zisdead1/PokemonAPI_Node_Server#readme"
+}
