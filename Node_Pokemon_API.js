@@ -11,38 +11,38 @@ app.get("/pokemon/:pokemonid", (req, res, next) => {
     //Dynamically get the pokemon character which will be 
     //last param in the url
     var pokemon = req.params.pokemonid;
-
     //now need to make a call to the 
     //PokeAPI to get a description for the
     //pokemon character sent in the URL
+    
     //https://pokeapi.co/api/v2/pokemon-species/
     //has an embedded description of a given pokemon
     P.getPokemonSpeciesByName(pokemon, function(response, error) { // with callback
         if(!error) {
-            //this is where we find a description in the returned object
+            //this is where we find the pokemon description in the returned object
             var pokemonDesc = response.flavor_text_entries[6].flavor_text;
+            //dont want to be dealing with Line feeds/breaks remove them
+            pokemonDesc = pokemonDesc.replace(/(\r\n|\n|\r)/gm, "");
+            //now get string ready for a URL based API call
+            pokemonDesc = encodeURI(pokemonDesc);
             //Now make call to Shakespeare translator API 
             var apiBaseString = "https://api.funtranslations.com/translate/shakespeare.json?text=";
-            //Take care of escaping the relavant characters in the string
-            var escapedStr = encodeURI(apiBaseString+pokemonDesc);
-            //res.send(escapedStr);
-            //console.log(escapedStr);
-            makePostRequest(escapedStr);
+            makePostRequest(apiBaseString+pokemonDesc, pokemon);
         } else {
-            res.status(404).json('Sorry we dont have that Pokemon');
+            res.json('Sorry we dont have that Pokemon');
         }
     });
 
-    async function makePostRequest(url) {
-        //Generic POST HTTP call
-        var escapedStr = encodeURI(url);
-        //console.log(escapedStr);
-        let postRes = await axios.post("https://api.funtranslations.com/translate/shakespeare.json?text=CHARIZARD%20flies%20around%20the%20sky");
-        res.send(postRes.data.contents.translated);
-        console.log(res.data);
+    async function makePostRequest(url, pokemonName) {
+        console.log(url);
+        let postRes = await axios.post(url);
+        var output = new Object();
+        output.name = pokemonName;
+        output.description = postRes.data.contents.translated;
+        res.json(output);
     }
 });
 
 app.listen(3000, () => {
- console.log("Server running on port 3000");
+    console.log("Server running on port 3000");
 });
