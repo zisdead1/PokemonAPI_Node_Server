@@ -34,7 +34,6 @@ app.get("/pokemon/:pokemonid", (req, res, next) => {
     });
 
     async function makePostRequest(url, pokemonName) {
-        console.log(url);
         try
         {
             let postRes = await axios.post(url);
