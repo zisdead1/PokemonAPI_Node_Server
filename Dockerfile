@@ -1,17 +1,18 @@
-FROM node:12
-
-MAINTAINER davegarrehy@gmail.com
+FROM node:12-slim
 
 # Create app directory
 WORKDIR /usr/src/app
 
 # Install app dependencies
-COPY package*.json ./
+COPY package*.json /usr/src/app/
 
-COPY . .
+RUN npm install
+
+COPY . /usr/src/app
 
 #Our app lives at port 3000
 EXPOSE 3000
 
-CMD [ "node", "Node_Pokemon_API.js" ]
+#kick off our app
+CMD [ "npm", "start" ]
 

@@ -43,7 +43,7 @@ app.get("/pokemon/:pokemonid", (req, res, next) => {
             output.description = postRes.data.contents.translated;
             res.json(output);
         }catch (error) {
-            res.json('To may API calls this hour');
+            res.json('To many API calls this hour');
         }
     }
 });
