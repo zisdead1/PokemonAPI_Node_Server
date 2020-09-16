@@ -3,7 +3,7 @@ A restful API written in node/express which returns the shakespearean descriptio
 
 To install and test this REST Endpoint
 
-1. Clone the following public git repo to your local machine
+1. Clone the following public git repo to your local machine using your prefered method (zip file available if needed)
         https://github.com/zisdead1/PokemonAPI_Node_Server
 
 2.  Install docker for your test machine from
@@ -17,8 +17,6 @@ To install and test this REST Endpoint
 
 6. You should now have a docker container with a Server listening on Port 3000
 
-7. To test the server is working run the commnad "npm test"  (without the quotes)
-
-8. If all is well you will see to test cases reporting as passed.    
+7. Go to your browser and enter  http://localhost:3000/pokemon/charizard   and you should see a description returned
 
 9. For any issues or help needed contact davegarrehy@gmail.com
